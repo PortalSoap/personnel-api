@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using PersonnelAPI.Data;
 using PersonnelAPI.Config;
+using PersonnelAPI.Repository;
+using PersonnelAPI.Repository.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +18,8 @@ builder.Services.AddDbContext<PersonnelDbContext>(options => {
 var mapper = MappingConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddScoped<IPersonnelRepository, PersonnelRepository>();
 
 var app = builder.Build();
 
