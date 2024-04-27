@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PersonnelAPI.Data;
+using PersonnelAPI.Config;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<PersonnelDbContext>(options => {
     options.UseMySQL(builder.Configuration["ConnectionStrings:PersonnelDB"]);
 });
+
+var mapper = MappingConfig.RegisterMaps().CreateMapper();
+builder.Services.AddSingleton(mapper);
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 
