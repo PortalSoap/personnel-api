@@ -84,6 +84,7 @@ public class PersonnelRepository : IPersonnelRepository
             return false;
 
         _context.Personnel.Remove(person);
+        await _context.SaveChangesAsync();
         return true;
     }
 }
