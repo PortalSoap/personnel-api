@@ -102,8 +102,8 @@ public class PersonnelController : ControllerBase
     ///     PUT /personnel/1
     ///     {
     ///         "id": 1,
-    ///         "name": " Alex",
-    ///         "surname": " Marshall Green",
+    ///         "name": "Alex",
+    ///         "surname": "Marshall Green",
     ///         "job": "Mechanical Engineer",
     ///         "age": "34"
     ///     }
